@@ -1,6 +1,6 @@
-package typeclasses
+package shapes.typeclasses
 
-import untouchable._
+import shapes.untouchable._
 
 trait Calculator[T] {
   def area(shape: T): Double

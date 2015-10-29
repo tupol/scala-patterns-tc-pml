@@ -1,9 +1,9 @@
-package overloading
+package shapes.overloading
 
 
 import Math._
 
-import untouchable._
+import shapes.untouchable._
 
 object Calculator {
 
@@ -11,6 +11,7 @@ object Calculator {
 
   def area(shape: Square): Double = shape.a * shape.a
 
+  // Without this
   def area(shape: Shape): Double = shape match {
     case c : Circle => area(c)
     case s : Square => area(s)

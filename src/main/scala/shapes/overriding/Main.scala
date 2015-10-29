@@ -1,6 +1,6 @@
-package overriding
+package shapes.overriding
 
-import untouchable.{Square, Circle}
+import shapes.untouchable.{Square, Circle}
 
 object Main extends App {
 
