@@ -43,7 +43,12 @@ def f[A <% B](a: A) = a.bMethod
 def f[A](a: A)(implicit ev: A => B) = a.bMethod
 ```
 
+Since we want to apply an implicit conversion, we create an additional interface called `CanBeLabeled` that we will pass as an argument to the  `LabelMaker.createLabel()` method. Now we need to create implicit conversion methods from `Address` and `Product` to `CanBeLabeled`. Where should we put these methods is a different discussion, let's keep them in the `LabelPrinter` object.
+
+Unlike the adapter pattern, our `LabelPrinter.printLabel....()` methods will work with any infput parameter type for which we defined a conversion.
+
 ### `labels.typeclasses`
+The "Haskell" approach is to use the type classes pattern, which differs from the "pimp my lib" patter as it takes implicit parametric types instead of implicit conversion methods.
 
 According to Scala FAQ:
 >A context bound describes an implicit value, instead of view bound’s implicit conversion.
@@ -54,6 +59,8 @@ It is used to declare that for some type A, there is an implicit value of type B
 def f[A : B](a: A) = g(a)
 def f[A](a: A)(implicit ev: B[A]) = g(a)
 ```
+
+In this case ...
 
 
 ## Type class pattern
@@ -82,6 +89,7 @@ According to the Scala Language Specification, the implicits are searched in the
  - a member of an enclosing template, or
  - it may be have been made accessible without a prefix through an import clause
 2. all `implicit` members of some object that belongs to the implicit scope of the implicit parameter's type, T.
+
 
 
 
